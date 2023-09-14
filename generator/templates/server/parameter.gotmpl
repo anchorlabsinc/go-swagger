@@ -432,14 +432,14 @@ func ({{ .ReceiverName }} *{{ pascalize .Name }}Params) BindRequest(r *http.Requ
   {{- if not .IsArray }}
     {{- if .IsQueryParam }}
 
-  q{{ pascalize .Name }}, qhk{{ pascalize .Name }}, _ := qs.GetOK({{ .Path }})
-  if err := {{ .ReceiverName }}.bind{{ pascalize .ID }}(q{{ pascalize .Name }}, qhk{{ pascalize .Name }}, route.Formats); err != nil {
+  q{{ pascalize .ID }}, qhk{{ pascalize .ID }}, _ := qs.GetOK({{ .Path }})
+  if err := {{ .ReceiverName }}.bind{{ pascalize .ID }}(q{{ pascalize .ID }}, qhk{{ pascalize .ID }}, route.Formats); err != nil {
     res = append(res, err)
   }
     {{- else if .IsPathParam }}
 
-  r{{ pascalize .Name }}, rhk{{ pascalize .Name }}, _ := route.Params.GetOK({{ .Path }})
-  if err := {{ .ReceiverName }}.bind{{ pascalize .ID }}(r{{ pascalize .Name }}, rhk{{ pascalize .Name }}, route.Formats); err != nil {
+  r{{ pascalize .ID }}, rhk{{ pascalize .ID }}, _ := route.Params.GetOK({{ .Path }})
+  if err := {{ .ReceiverName }}.bind{{ pascalize .ID }}(r{{ pascalize .ID }}, rhk{{ pascalize .ID }}, route.Formats); err != nil {
     res = append(res, err)
   }
     {{- else if .IsHeaderParam }}
